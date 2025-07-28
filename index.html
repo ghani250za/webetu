@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>بوابة الطالب - PROGRES</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header id="pageTitle"></header>
+  <div class="container" id="mainContent"></div>
+
+  <footer>
+    <div id="tab-home" class="active" onclick="loadHome(); setActiveTab('home')">
+      <i class="fas fa-home" aria-label="الرئيسية"></i><span></span>
+    </div>
+    <div id="tab-cards" onclick="loadPage('cards'); setActiveTab('cards')">
+      <i class="fas fa-id-card" aria-label="بطاقاتي"></i><span></span>
+    </div>
+    <div id="tab-news" onclick="loadPage('news'); setActiveTab('news')">
+      <i class="fas fa-newspaper" aria-label="الأخبار"></i><span></span>
+    </div>
+    <div id="tab-profile" onclick="loadPage('profile'); setActiveTab('profile')">
+      <i class="fas fa-user" aria-label="حسابي"></i><span></span>
+    </div>
+  </footer>
+
+  <script src="translations.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

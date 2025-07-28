@@ -1,0 +1,121 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  padding-bottom: 80px;
+}
+
+header {
+  background-color: #fff;
+  padding: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: black;
+  transition: background-color 0.3s, color 0.3s;
+}
+header.green {
+  background-color: #00a16c;
+  color: white;
+}
+
+.logo {
+  width: 80%;
+  max-width: 400px;
+  margin: 10px auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  padding: 20px;
+}
+
+.card {
+  background-color: #007e63;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.card:hover {
+  background-color: #005f4b;
+}
+.card i {
+  font-size: 24px;
+  margin-bottom: 8px;
+  color: white;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  background-color: #1b1b2f;
+  color: white;
+  padding: 10px 0;
+}
+footer div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 14px;
+  cursor: pointer;
+}
+footer div i {
+  color: white;
+  margin-bottom: 5px;
+}
+footer div.active {
+  color: #00d9a5;
+}
+footer div.active i {
+  color: #00d9a5;
+}
+
+
+.card-flip-container {
+  width: 300px;
+  height: 190px;
+  margin: 30px auto;
+  perspective: 1000px;
+  cursor: pointer;
+}
+.card-flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+.card-flip-container.flipped .card-flip-inner {
+  transform: rotateY(180deg);
+}
+.card-flip-front, .card-flip-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+.card-flip-front img, .card-flip-back img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+.card-flip-back {
+  transform: rotateY(180deg);
+}

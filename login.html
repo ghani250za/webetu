@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PROGRES - Connexion Étudiant</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: url('background-progres.png') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 30px;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+    .logo {
+      width: 100%;
+      max-width: 300px;
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    .subtitle {
+      font-size: 16px;
+      margin-bottom: 30px;
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 30px;
+      border: none;
+      background-color: #f1f1f1;
+      font-size: 14px;
+      text-align: left;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 30px;
+      background-color: #00b25c;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .footer {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img class="logo" src="images/logo.png" alt="PROGRES logo">
+
+    <h1>Progiciel de gestion intégré</h1>
+    <div class="subtitle">بوابة الطالب</div>
+
+    <input id="reg" type="text" placeholder="أدخل رقم التسجيل" />
+    <input id="pwd" type="password" placeholder="أدخل كلمة المرور" />
+    <button onclick="login()">تسجيل الدخول</button>
+
+    <div class="footer">
+      Ministère de l’Enseignement Supérieur et de la Recherche Scientifique<br>
+      Copyright © 2024
+    </div>
+  </div>
+
+  <script>
+    function login() {
+      const registration_number = document.getElementById('reg').value.trim();
+      const password = document.getElementById('pwd').value.trim();
+
+      if (!registration_number || !password) {
+        alert("يرجى ملء كل الحقول.");
+        return;
+      }
+
+      fetch('http://127.0.0.1:5000/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ registration_number, password })
+      })
+      .then(res => {
+        if (!res.ok) throw new Error("بيانات الدخول غير صحيحة");
+        return res.json();
+      })
+      .then(data => {
+        localStorage.setItem('student', JSON.stringify(data));
+        window.location.href = "index.html";  // ✅ التوجيه إلى صفحة بعد الدخول
+      })
+      .catch(error => {
+        alert(error.message);
+      });
+    }
+  </script>
+</body>
+</html>
